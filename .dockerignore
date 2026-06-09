@@ -1,0 +1,25 @@
+.git
+.gitignore
+.dockerignore
+
+# Never bake local secrets or backups into the image
+.env
+.env.*
+备份/
+
+# Runtime/generated data should be mounted as volumes instead
+data/chroma_db/
+data/memory/
+data/affection/
+data/example_memory/
+data/example_affection/
+data/sandbox/
+
+# Python/editor caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.vscode/
+*.log

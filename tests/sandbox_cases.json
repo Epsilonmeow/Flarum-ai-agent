@@ -1,0 +1,45 @@
+[
+  {
+    "id": "basic_memory",
+    "description": "基础对话与短期记忆验证",
+    "user_id": "sandbox_user_basic",
+    "messages": [
+      "你好，我是新来的",
+      "你记得我刚才说了什么吗？"
+    ],
+    "expect": {
+      "memory_turns_min": 2,
+      "affection_score_min": 1,
+      "reply_should_contain_any": ["沙盒", "记忆", "data/sandbox"]
+    }
+  },
+  {
+    "id": "emotional_support",
+    "description": "情绪支持回复验证",
+    "user_id": "sandbox_user_emotion",
+    "messages": [
+      "我最近压力很大，有点睡不着",
+      "我感觉自己有点撑不住了"
+    ],
+    "expect": {
+      "memory_turns_min": 2,
+      "affection_score_min": 1,
+      "reply_should_contain_any": ["压力", "陪", "支持", "面对"]
+    }
+  },
+  {
+    "id": "affection_growth",
+    "description": "感谢与陪伴类互动的好感度增长验证",
+    "user_id": "sandbox_user_affection",
+    "messages": [
+      "谢谢你的回复",
+      "能和你说说话真好",
+      "谢谢你的陪伴"
+    ],
+    "expect": {
+      "memory_turns_min": 3,
+      "affection_score_min": 3,
+      "reply_should_contain_any": ["不用客气", "陪", "沙盒"]
+    }
+  }
+]

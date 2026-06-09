@@ -1,0 +1,116 @@
+# ==========================================
+# Flarum AI Agent - Docker Compose 配置
+# ==========================================
+# 使用说明:
+# 1. 复制 .env.example 为 .env 并填写配置
+# 2. 确保 data/ 目录存在且有读写权限
+# 3. 运行: docker-compose up -d
+# 4. 查看日志: docker-compose logs -f
+# ==========================================
+
+services:
+  # ----------------------------
+  # FastAPI Webhook 服务
+  # ----------------------------
+  webhook:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: flarum-ai-agent:latest
+    container_name: flarum-ai-webhook
+    restart: unless-stopped
+    
+    # 端口映射
+    ports:
+      - "${WEBHOOK_PORT:-8000}:8000"
+    
+    # 环境变量
+    env_file:
+      - .env
+    
+    # 数据卷挂载
+    volumes:
+      # 挂载数据目录（持久化 ChromaDB、世界书等）
+      - ./data:/app/data
+      # 挂载 .env 配置文件（便于修改配置后重启生效）
+      - ./.env:/app/.env:ro
+    
+    # 健康检查
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    
+    # 日志配置
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    
+    # 网络
+    networks:
+      - flarum-ai-network
+
+  # ----------------------------
+  # Streamlit Admin UI 后台
+  # ----------------------------
+  admin-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: flarum-ai-agent:latest
+    container_name: flarum-ai-admin
+    restart: unless-stopped
+    
+    # 端口映射
+    ports:
+      - "${ADMIN_UI_PORT:-8501}:8501"
+    
+    # 环境变量
+    env_file:
+      - .env
+    
+    # 数据卷挂载（与 webhook 服务共享数据）
+    volumes:
+      - ./data:/app/data
+      - ./.env:/app/.env
+    
+    # 启动命令：运行 Streamlit
+    command: >
+      streamlit run admin_ui.py
+      --server.port=8501
+      --server.address=0.0.0.0
+      --server.headless=true
+      --browser.gatherUsageStats=false
+    
+    # 依赖（可选：确保 webhook 先启动）
+    depends_on:
+      webhook:
+        condition: service_healthy
+    
+    # 日志配置
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    
+    networks:
+      - flarum-ai-network
+
+# ----------------------------
+# 共享网络
+# ----------------------------
+networks:
+  flarum-ai-network:
+    driver: bridge
+
+# ----------------------------
+# 数据卷（可选：使用 Docker 命名卷）
+# ----------------------------
+volumes:
+  flarum-ai-data:
+    driver: local

@@ -1,0 +1,24 @@
+# Python cache and virtual environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Local secrets and backups
+.env
+.env.*
+!.env.example
+备份/
+
+# Runtime data and generated reports
+data/chroma_db/
+data/memory/
+data/affection/
+data/example_memory/
+data/example_affection/
+data/sandbox/reports/
+
+# Logs and local editor files
+*.log
+.vscode/
