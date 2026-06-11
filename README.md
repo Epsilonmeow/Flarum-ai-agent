@@ -1,4 +1,4 @@
-# 🐱 Flarum AI Agent
+#  Flarum AI Agent
 
 基于 FastAPI 的 Flarum 论坛智能回复机器人，采用"JSON世界书 + ChromaDB向量记忆"双轨架构。
 
@@ -51,7 +51,7 @@ Flarum_AI_Agent/
 
 ## 🚀 快速开始
 
-> 第一次使用建议先阅读：[🐱 第一次使用指南](FIRST_USE_GUIDE.md)。它会按“安装依赖 → 沙盒测试 → 管理后台 → 真实 LLM → Webhook → Flarum”的顺序带你安全上手。
+> 第一次使用建议先阅读：[ 第一次使用指南](FIRST_USE_GUIDE.md)。它会按“安装依赖 → 沙盒测试 → 管理后台 → 真实 LLM → Webhook → Flarum”的顺序带你安全上手。
 
 ### 1. 环境准备
 
@@ -324,4 +324,4 @@ MIT License
 
 ---
 
-🐱 **Flarum AI Agent** - 用 AI 温暖每一个社区里的声音
+ **Flarum AI Agent** - 用 AI 温暖每一个社区里的声音
