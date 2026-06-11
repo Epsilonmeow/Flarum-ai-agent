@@ -2,7 +2,7 @@
 
 基于 FastAPI 的 Flarum 论坛智能回复机器人，采用"JSON世界书 + ChromaDB向量记忆"双轨架构。
 
-> 公开发布版不包含真实 `.env`、真实世界书、用户记忆、好感度数据、ChromaDB 数据或沙盒报告。请复制 `.env.example` 并自行创建 `data/worldbook.json` 或在管理后台创建 V3 世界书。
+> 此版本不包含真实 `.env`、真实世界书、用户记忆、好感度数据、ChromaDB 数据或沙盒报告。如有需要，请复制 `.env.example` 并自行创建 `data/worldbook.json` 或在管理后台创建 V3 世界书。
 
 ## ✨ 项目特性
 
