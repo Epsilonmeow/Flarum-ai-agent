@@ -57,7 +57,7 @@ Flarum_AI_Agent/
 
 ```bash
 # 克隆项目
-git clone <your-repo>
+git clone https://github.com/Epsilonmeow/Flarum-ai-agent.git
 cd Flarum_AI_Agent
 
 # 创建环境文件
