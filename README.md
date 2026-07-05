@@ -325,6 +325,13 @@ MIT License
 
 欢迎Issue和PR！
 
+## 开源协议与鸣谢 (License & Acknowledgments)
+
+本项目基于 **GNU AGPL v3** 协议开源。
+
+本项目的核心架构（含部分原创代码）由 Flarum AI Agent Contributors 开发。
+同时，本项目中的“三层记忆系统”核心设计理念与相关实现逻辑，参考并派生自开源项目 [Odysseia-Guidance](https://github.com/Echoer009/Odysseia-Guidance)。
+在此对原项目及作者 Echoer009 的开源精神表示诚挚的感谢！
 ---
 
  **Flarum AI Agent** - 用 AI 温暖每一个社区里的声音
