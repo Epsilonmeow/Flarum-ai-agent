@@ -1,7 +1,7 @@
 #  Flarum AI Agent
 ![项目UI界面](image/Pic1.png)
 ![项目世界书界面](image/世界书界面.png)
-![项目测试样例](image/项目测试样例.png)
+![项目测试样例](image/测试报告样例.png)
 
 基于 FastAPI 的 Flarum 论坛智能回复机器人，采用"JSON世界书 + ChromaDB向量记忆"双轨架构。
 
